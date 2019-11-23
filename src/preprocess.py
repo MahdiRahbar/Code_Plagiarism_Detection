@@ -21,10 +21,23 @@ class DataReader():
                                 # double checked in the future to see
                                 # if the imported format is valid for 
                                 # the application.
+        self.valid_format = ['.cpp', '.py', '.ipynb']
+        self.doc_dict = {}
 
 
     def Load_Data(self):
-        pass
+        '''
+        Loading the data from the given path.
+        '''
+        for filename in os.listdir(self.loading_dir):
+            f_name , f_ext = splitext(filename)  
+            if f_ext in self.valid_format:
+                file_path = self.loading_dir + '/' + filename
+                loaded_file = open(file_path,'r',encoding = "utf-8") 
+                line_seperated_data = loaded_file.readlines() 
+                self.doc_dict[filename] = line_seperated_data[0]
+ 
+        return self.doc_dict
 
     def Tokenizer(self):
         pass
