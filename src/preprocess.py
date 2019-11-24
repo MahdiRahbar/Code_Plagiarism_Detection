@@ -35,11 +35,25 @@ class DataReader():
                 file_path = self.loading_dir + '/' + filename
                 loaded_file = open(file_path,'r',encoding = "utf-8") 
                 line_seperated_data = loaded_file.readlines() 
+                if f_ext = ".ipynb": # Check whether the file is Jupyter notebook or not!
+                    line_seperated_data[0] = Notebook_to_Code(line_seperated_data[0])
                 self.doc_dict[filename] = line_seperated_data[0]
- 
         return self.doc_dict
 
-    def Tokenizer(self):
+
+    def Notebook_to_Code(self, org_notebook):
+        """
+        Function | This function changes jupyter notebooks
+                   to raw python code.
+        """
         pass
+
+
+    def Tokenizer(self):
+        # This function has to tokenize 
+        pass
+
+
+    
 
     
